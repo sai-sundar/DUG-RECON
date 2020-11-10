@@ -6,3 +6,7 @@ DUG-RECON: A Framework for Direct Image Reconstruction using Convolutional Gener
 
 The DUG-RECON framework has a three stage training with Denoising, DUG and the SuperResnet block. The training methodology is explained in the paper and individual python files are present in this repo to train the different stages.
 
+Requirements:
+Python 3
+Tensorflow 1.14
+Keras 2.0
