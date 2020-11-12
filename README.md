@@ -20,7 +20,11 @@ This block is a modified version of the U-Net as depicted below.
 
 ### 2. Image Reconstruction: (DUG)
 This block is a novel architecture for learning the mapping from projection to image domain. It is called **Double-UNet Generator (DUG)** 
+![Image Reconstruction](https://github.com/sai-sundar/DUG-RECON/blob/main/images/dugan.png)
 
+### 3. Super Resolution:
+This stage consists of a Super Resnet, to improve the images predicted by the Image Reconstruction Block.
+![Image Reconstruction](https://github.com/sai-sundar/DUG-RECON/blob/main/images/super_nn.png)
 
 The DUG-RECON framework has a three stage training with Denoising, DUG and the SuperResnet block.
 
