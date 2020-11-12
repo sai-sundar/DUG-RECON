@@ -26,6 +26,12 @@ This block is a novel architecture for learning the mapping from projection to i
 This stage consists of a Super Resnet, to improve the images predicted by the Image Reconstruction Block.
 ![Image Reconstruction](https://github.com/sai-sundar/DUG-RECON/blob/main/images/super_nn.png)
 
+### Dataset Preparation:
+The dataset used in this work is ACRIN FLT Brest Cancer database. It can be found [here](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=30671268). This dataset is a combination of PET and CT imaging modalities found in DICOM format. Once the data is sorted according to patients and imaging modality we have prepared them for training by converting the dicom files into npy array. This can be customised for any dataset by using the data_preparation.py script. 
+
+
+### Training 
+
 The DUG-RECON framework has a three stage training with Denoising, DUG and the SuperResnet block.
 
 The code in this repo is associated to the article given below:
