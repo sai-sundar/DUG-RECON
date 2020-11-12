@@ -14,18 +14,18 @@ from keras.engine.topology import Layer, InputSpec
 from scipy.misc import imsave
 
 
-h = 128  # height and widthof the image
+h = 128  # height and width of the image
 w = 128 
 
 X_t = np.load("sino_denoise.npy") # Loading sinogram
 Y_t = np.load("images_total.npy")# Loading Images
 
 # Dividing the data into training and validation
-X_train = X_t[0:int(0.8*len(X_t))] # 80:20 split 
-Y_train = Y_t[0:int(0.8*len(Y_t))]
+X_train = X_t[0:40000] # We have trained on 40000 projection-image pairs
+Y_train = Y_t[0:40000]
 
-X_valid = X_t[int(0.8*len(X_t)):]
-Y_valid = Y_t[int(0.8*len(Y_t)):]
+X_valid = X_t[40000:60000]
+Y_valid = Y_t[40000:60000]
 
 
 input_datagen = ImageDataGenerator()
@@ -49,20 +49,20 @@ class GAN():
 
         optimizer = Adam(0.0002, 0.5)
 
-        # Build and compile the discriminator
+        # Build and compile the generator2
         self.generator2 = self.build_generator2()
         
-        # Build the generator
+        # Build the generator1
         self.generator1 = self.build_generator1()
         
-        # The generator takes noise as input and generates imgs
+        # Generator takes  denoised projections as input and generates images
         z = Input(shape=(h,w,1,))
         img = self.generator1(z)
 
         # For the combined model we will only train the generator
         self.genarator2.trainable = False
 
-        # The discriminator takes generated images as input and determines validity
+        # The discriminator takes generated images as input and maps to projections
         validity = self.generator2(img)
 
         # The combined model  (stacked generator and discriminator)
@@ -88,10 +88,10 @@ class GAN():
 
             
                       
-            gen_imgs = self.generator1.predict_generator(input_generator,len(X_train)) # Generate Images
-            d_loss_fake = self.generator2.fit(gen_imgs,X_train,epochs=1,batch_size=batch_size,shuffle=False)
-            g_loss1 = self.generator1.fit(X,Y,epochs=1,batch_size=batch_size,shuffle=False)
-            g_loss2 = self.combined.fit(X,X,epochs=1,batch_size=batch_size,shuffle=False)
+            gen_imgs = self.generator1.predict_generator(input_generator,40000) # Generate Images
+            g2_loss = self.generator2.fit(gen_imgs,X_train,epochs=1,batch_size=batch_size,shuffle=False)
+            g1_loss1 = self.generator1.fit(X,Y,epochs=1,batch_size=batch_size,shuffle=False)
+            g1_loss2 = self.combined.fit(X,X,epochs=1,batch_size=batch_size,shuffle=False)
 
 
     def pred(self,num=10):
