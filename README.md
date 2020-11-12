@@ -18,6 +18,7 @@ This block is a modified version of the U-Net as depicted below.
 
 ![Denoise](https://github.com/sai-sundar/DUG-RECON/blob/main/images/denoise-crop.pdf)
 
+
 The DUG-RECON framework has a three stage training with Denoising, DUG and the SuperResnet block.
 
 The code in this repo is associated to the article given below:
