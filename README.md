@@ -10,9 +10,13 @@ Tomographic Medical Image Reconstruction involves the mapping from projection sp
 ### Architecture Description:
 
 This framework consists of three stages, decentralising the image reconstruction process. First stage denoises the projection data, the second stage learns the mapping from projection to image space and finally a super resolution block improves the data in the image space.
+
 ![Three-stage](https://github.com/sai-sundar/DUG-RECON/blob/main/images/three_stage.png)
 
+1. **Denoising** 
+This block is a modified version of the U-Net as depicted below.
 
+![Denoise](https://github.com/sai-sundar/DUG-RECON/blob/main/images/denoise-crop.pdf)
 
 The DUG-RECON framework has a three stage training with Denoising, DUG and the SuperResnet block.
 
