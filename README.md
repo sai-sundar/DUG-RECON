@@ -7,8 +7,16 @@ Tomographic Medical Image Reconstruction involves the mapping from projection sp
 * Keras 2.0
 * pydicom 
 
+### Architecture Description:
+
+This framework consists of three stages, decentralising the image reconstruction process. First stage denoises the projection data, the second stage learns the mapping from projection to image space and finally a super resolution block improves the data in the image space.
+![Three-stage](https://github.com/sai-sundar/DUG-RECON/images/three_stage.png)
+
+
+
 The DUG-RECON framework has a three stage training with Denoising, DUG and the SuperResnet block.
 
 The code in this repo is associated to the article given below:
 *DUG-RECON: A Framework for Direct Image Reconstruction using Convolutional Generative Networks*, The article can be found [here](https://doi.org/10.1109/TRPMS.2020.3033172)
+
 
