@@ -1,7 +1,4 @@
 from model import *
-
-
-
 import keras
 import numpy as np
 from time import time
@@ -61,28 +58,5 @@ model = create_full_us_unet(
 loss = model.fit(sino_low,sino_high,epochs=100,batch_size=8,validation_split=0.2)
 
 model.save("denoise.h5")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
