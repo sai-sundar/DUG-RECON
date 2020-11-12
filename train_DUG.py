@@ -60,7 +60,7 @@ class GAN():
         img = self.generator1(z)
 
         # For the combined model we will only train the generator
-        self.genarator2.trainable = False
+        self.generator2.trainable = False
 
         # The discriminator takes generated images as input and maps to projections
         validity = self.generator2(img)
