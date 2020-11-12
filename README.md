@@ -13,10 +13,13 @@ This framework consists of three stages, decentralising the image reconstruction
 
 ![Three-stage](https://github.com/sai-sundar/DUG-RECON/blob/main/images/three_stage.png)
 
-1. **Denoising** 
+### 1. Denoising
 This block is a modified version of the U-Net as depicted below.
 
 ![Denoise-stage](https://github.com/sai-sundar/DUG-RECON/blob/main/images/denoise_nn.jpg)
+
+### 2. Image Reconstruction: (DUG)
+This block is a novel architecture for learning the mapping from projection to image domain. It is called **Double-UNet Generator (DUG)** 
 
 
 The DUG-RECON framework has a three stage training with Denoising, DUG and the SuperResnet block.
